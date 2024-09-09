@@ -1,0 +1,37 @@
+public class JogoMarioKart {
+
+    public static void main(String[] args) {
+
+        MenuSelecao menu = getMenuSelecao();
+
+        // Selecionar personagem, carro e cor
+        Personagem personagemEscolhido = menu.selecionarPersonagem();
+        Carro carroEscolhido = menu.selecionarCarro();
+        String corEscolhida = menu.selecionarCor();
+        carroEscolhido.setCor(corEscolhida);
+
+        // Exibir a escolha final
+        System.out.println("Você escolheu:");
+        System.out.println("Personagem: " + personagemEscolhido.getNome());
+        System.out.println("Carro: " + carroEscolhido.getModelo() + " (Cor: " + carroEscolhido.getCor() + ")");
+    }
+
+    private static MenuSelecao getMenuSelecao() {
+        Personagem[] personagens = {
+                new Personagem("Mario"),
+                new Personagem("Luigi"),
+                new Personagem("Peach"),
+                new Personagem("Bowser")
+        };
+
+        // Criação de carros com cores padrão
+        Carro[] carros = {
+                new Carro("Kart Padrão", "Vermelho"),
+                new Carro("Moto Veloz", "Azul"),
+                new Carro("Carrão Turbo", "Verde")
+        };
+
+        // Criando o menu de seleção
+        return new MenuSelecao(personagens, carros);
+    }
+}
